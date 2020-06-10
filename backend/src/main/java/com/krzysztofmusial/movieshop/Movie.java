@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -15,7 +16,7 @@ public class Movie {
     private Long id;
     private String title;
     private String category;
-    private Date date;
+    private LocalDate date;
     private String description;
     private Float price;
 
@@ -23,7 +24,7 @@ public class Movie {
 
     public Movie() {}
 
-    public Movie(Long id, String title, String category, Date date, String description, Float price) {
+    public Movie(Long id, String title, String category, LocalDate date, String description, Float price) {
         this.id = id;
         this.title = title;
         this.category = category;
@@ -51,10 +52,10 @@ public class Movie {
     public void setCategory(String category) {
         this.category = category;
     }
-    public Date getDate() {
+    public LocalDate getDate() {
         return date;
     }
-    public void setDate(Date date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
     public String getDescription() {

@@ -1,15 +1,12 @@
 package com.krzysztofmusial.movieshop;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/movies")
 public class MovieApi {
 
     private MovieManager movieManager;
@@ -19,14 +16,15 @@ public class MovieApi {
         this.movieManager = movieManager;
     }
 
-    @GetMapping("/all")
+    @RequestMapping("/api/movies/all")
     public Iterable<Movie> findAll() {
         return movieManager.findAll();
     }
 
-    @GetMapping
-    public Optional<Movie> findById(@RequestParam Long id) {
-        return movieManager.findById(id);
-    }
+    @RequestMapping("/api/movies/id/{id}")
+    public Optional<Movie> findById(@PathVariable Long id) { return movieManager.findById(id); }
+
+    @RequestMapping("/api/movies/category/{category}")
+    public List<Movie> findByCategory(@PathVariable String category) { return movieManager.findByCategory(category); }
 
 }
