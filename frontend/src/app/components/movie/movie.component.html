@@ -1,1 +1,18 @@
-<p>movie works!</p>
+<div class="content">
+
+    <mat-card class="card">
+        <mat-card-header>
+            <mat-card-title>{{ movie?.title }}</mat-card-title>
+            <mat-card-subtitle>{{ movie?.category }}</mat-card-subtitle>
+        </mat-card-header>
+        <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+        <mat-card-content>
+            <p>{{ movie?.date }}</p>
+            <p>{{ movie?.description }}</p>
+          </mat-card-content>
+        <mat-card-actions>
+            <button mat-stroked-button color="accent" (click)="addToCart(movie?.id)">${{ movie?.price }}</button>
+          </mat-card-actions>
+    </mat-card>
+
+</div>

@@ -8,13 +8,17 @@ import { LocalService } from './shared/local.service';
 })
 export class AppComponent implements OnInit {
 
-  amount = 0;
+  amount = undefined;
 
   constructor (private local: LocalService) {}
 
   ngOnInit(): void {
     this.local.amount.subscribe((data)=>{
-      this.amount = data;
+      if (data === 0) {
+        this.amount = undefined;
+      } else {
+        this.amount = data;
+      }
     })
   }
 

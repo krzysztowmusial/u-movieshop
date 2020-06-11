@@ -45,7 +45,6 @@ export class HomeComponent implements OnInit {
 
   addToCart(movieId) {
     this.local.addToCart(movieId);
-    this.local.updateAmount();
   }
 
 }

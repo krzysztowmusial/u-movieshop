@@ -1,0 +1,22 @@
+.item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 0;
+    cursor: pointer;
+
+    &.center {
+        justify-content: center;
+    }
+
+    .title {
+    }
+}
+
+.sum {
+    width: auto;
+    padding: 16px;
+    padding-right: 56px;
+    display: flex;
+    justify-content: flex-end;
+}

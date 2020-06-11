@@ -10,23 +10,25 @@ import { LocalService } from 'src/app/shared/local.service';
 export class CartComponent implements OnInit {
 
   items = [];
+  sum = 0;
 
   constructor(private api: ApiService, private local: LocalService) { }
 
   ngOnInit(): void {
-    let temp = JSON.parse(localStorage.getItem('cart'))
-    console.log(temp)
-
-    for (let index = 0; index < temp.length; index++) {
-      this.api.findById(temp[index]).subscribe((data)=>{
-        this.items.push(data)
-      });
-    }
+    this.local.local.subscribe((data)=>{
+      this.items = [];
+      this.sum = 0;
+      for (let i = 0; i < data.length; i++) {
+        this.api.findById(data[i]).subscribe((movie)=>{
+          this.items.push(movie)
+          this.sum += movie['price'];
+        });
+      }
+    })
   }
 
   removeFromCart(movieId) {
     this.local.removeFromCart(movieId);
-    this.local.updateAmount();
   }
 
 }

@@ -1,4 +1,23 @@
-<mat-card *ngFor="let item of items">
-    {{ item.title }}
-    <button mat-button (click)="removeFromCart(item.id)">REMOVE</button>
-</mat-card>
+<div *ngIf="items.length > 0; else elseBlock">
+    <mat-card *ngFor="let item of items" class="item" [routerLink]="['/movie', item.id]">
+        <div class="title">
+            {{ item.title }}
+        </div>
+        <div>
+            <button mat-button>${{ item.price }}</button>
+            <button mat-icon-button color="warn" (click)="removeFromCart(item.id)">
+                <mat-icon>delete_forever</mat-icon>
+            </button>
+        </div>
+    </mat-card>
+    <div class="sum">
+        <button mat-raised-button>
+            ${{ sum }}
+        </button>
+    </div>
+</div>
+<ng-template #elseBlock>
+    <mat-card class="item center">
+        Your cart is empty.
+    </mat-card>
+</ng-template>
