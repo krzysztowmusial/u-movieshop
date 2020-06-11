@@ -1,0 +1,4 @@
+<mat-card *ngFor="let item of items">
+    {{ item.title }}
+    <button mat-button (click)="removeFromCart(item.id)">REMOVE</button>
+</mat-card>

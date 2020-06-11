@@ -1,0 +1,11 @@
+<main>
+    <mat-toolbar color="primary" class="header">
+        <button mat-stroked-button [routerLink]="['/']">
+            <mat-icon>home</mat-icon>
+        </button>
+        <button mat-stroked-button [routerLink]="['/cart']">
+            <mat-icon [matBadge]="amount" matBadgeColor="warn">shopping_cart</mat-icon>
+        </button>
+    </mat-toolbar>
+    <router-outlet></router-outlet>
+</main>
